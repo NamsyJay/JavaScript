@@ -1,1 +1,36 @@
 This involves creating a react application
+
+STEPS 
+INITIAL SETUP
+- Create Directory.
+- Create Dockerfile & node.js file.
+- Then "docker build -t(tag) "name of the folder containing the files - medtech) ."
+- Docker images - views images
+- Docker run "medtech"
+
+REACT DOCKER DEMO
+- install "npm create vite@latest react-docker".
+- select java flavour, react, typescript.
+- cd react-docker and create a Dockerfile in folder.
+      >> In the Dockerfile, set the parameters for security.
+      >> "RUN addgroup app && adduser -S -G app app"
+            >> S creates system user, G add user to group.
+            >> This ensures Docker does not run as a root user. 
+      >> COPY package.json ./
+      >> USER root
+            >> in case of "EACCESS:permission error"; set "USER root".
+      >> RUN chown -R app:app .
+            >> chown -R "user":"group" "directory"
+            >> chown changes user owner of file
+      >> USER app 
+            >> change owner back to app user
+      >> RUN npm install
+            >> install dependencies
+      >> COPY .  .
+            >> copy rest of the files to working directory.
+      >> EXPOSE 5173
+            >> tells Docker that the container listens at runtime.
+      >> CMD npm run dev 
+            >> run the app.
+- Create ".dockerignore"
+      >> node_modules/ in the file.
