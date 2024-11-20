@@ -34,3 +34,15 @@ REACT DOCKER DEMO
             >> run the app.
 - Create ".dockerignore"
       >> node_modules/ in the file.
+- Then Use build command.
+      >> "docker build -t react-docker ."
+- Then docker run react-docker 
+      >> Docker runs in isolation and the host system is not aware; hence why the site cannot be viewed.
+      >> Head to package.json and fix "scripts" - "dev": "vite --host",
+      >> Kill terminal and rerun.
+      >> Then run port mapping to fix this.            
+      >> "docker run -p 5173:5173 react-docker"
+- docker commands
+      >> docker run "container ID" --force: forces container to stop.
+      >> docker rm "container ID" 
+- Clear the content of docker desktop and build again.
